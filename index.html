@@ -29,6 +29,8 @@
 <div id="chat">
   <div id="messages"></div>
   <input disabled placeholder="Connecting..." id="newmessage"></input>
+  <button onclick="myFunction()">Click me</button>
+
 </div>
 
 <!-- Imports jQuery -->
@@ -38,6 +40,10 @@
 <script src='/_ah/channel/jsapi'></script>
 
 <script>
+function myFunction(){
+    $.post('/send', {data: newmessage.val()});
+    newmessage.val('');
+  }
   var messages = $('#messages');
   var newmessage = $('#newmessage');
 
@@ -71,4 +77,5 @@ newmessage.on('keypress', function(e) {
 newmessage.on('blur', function(e) {
   newmessage.focus();
 });
+
 </script>
